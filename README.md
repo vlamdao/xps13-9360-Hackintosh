@@ -59,24 +59,23 @@ Color calibration file：Displays/RXN49_LQ133Z1_01.icm, The file is a QHD screen
 
 ### Bluetooth
 
-关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录或者将BrcmFirmwareRepo.kext和BrcmPatchRAM2.kext放入到系统L/E目录下并重建缓存，官方解释说放到系统种内存效率更高，目前没看出来差别，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试,10.15使用10.15文件夹驱动
+Regarding the Bluetooth problem, put the BrcmFirmwareData.kext and BrcmPatchRAM2.kext drivers in the Bluetooth directory into the corresponding driver directory of the clover or put BrcmFirmwareRepo.kext and BrcmPatchRAM2.kext in the system L/E directory and rebuild the cache. The official explanation is that they are placed in the system. This kind of memory is more efficient, and I can't see the difference at present. BT4LEContiunityFixup.kext is to repair the Handoff function. I don't need it. I didn't add it. I tested it myself. 10.15 uses the 10.15 folder driver.
 
-已更换白果卡,大家自行解决,最新蓝牙下载地址：https://github.com/acidanthera/BrcmPatchRAM/releases
+If the card has been replaced, Solve it by yourself, The latest Bluetooth download address：https://github.com/acidanthera/BrcmPatchRAM/releases
 
 
 
 ### WIFI
 
-关于WIFI问题，如果WIFI无法驱动，添加WIFI目录下的驱动，DW1830不需要，DW1560可能需要
+Regarding the WIFI problem, if the WIFI cannot be driven, add the driver in the WIFI directory, DW1830 does not need it, DW1560 may need it
 
 
 
 ### CPU
 
-有低频需求的，建议使用[stevezhengshiqi/one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend)的脚本根据自己需求定制，有多种选择
+With low frequency，It is recommended to use [stevezhengshiqi/one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend) The script is customized according to your needs，There are many options
 
-或者以下脚本
-
+or the following script
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/stevezhengshiqi/one-key-cpufriend/master/one-key-cpufriend_cn.sh)"
 ```
@@ -85,24 +84,24 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/stevezhengshiqi/one-key-
 
 ### USB
 
-目前有2种驱动方式RM的usbinjectall+uiac和基于fbPatcher.app生成的USBPort，目前没看出来哪个方式更好，我更加倾向于第一种
+There are currently two driving methods: RM's usbinjectall+uiac and the USBPort generated based on fbPatcher.app. I don't see which one is better. I prefer the first one.
 
-第一种也是默认方式使用RM的usbinjectall方式，将kext/USB/usbinjectall的SSDT-UIAC.aml放到CLOVER⁩/ACPI⁩/⁨patched⁩下，USBInjectAll.kext放到CLOVER⁩/kexts/Other下，并删除USBPorts.kext,重启
+The first is also the default way to use RM's usbinjectall method, put SSDT-UIAC.aml of kext/USB/usbinjectall under CLOVER/ACPI/patched, USBInjectAll.kext under CLOVER/kexts/Other, And delete USBPorts.kext, reboot
 
-第二种方式，目前默认的方式，有个弊端，就是修改smbios后导致所有sub失效，需要修改USBPorts.kext,我默认添加了一个kext/USB/usbport/mbp14,1/USBPorts.kext,这个支持smbios为mbp14,1，替换原来的就好了，如果想更改其他smbios，教程如下：
+The second method, the current default method, has a drawback, that is, after modifying smbios, all subs will fail, and you need to modify USBPorts.kext. I added a kext/USB/usbport/mbp14,1/USBPorts.kext by default, this supports The smbios is mbp14,1, just replace the original one. If you want to change other smbios, the tutorial is as follows:
 
-1. 右键USBPorts.kext显示包内容
-2. 随便一个文本工具打开Contents的Info.plist，修改几个信息即可
+1. Right-click USBPorts.kext to display the package contents
+2. Just open the Info.plist of Contents with any text tool and modify a few pieces of information.
 
 
 
-### 摄像头
+### Camera
 
 > ProductID_22155   	(0x568b)
 >
 > VendorID_3034      	(0x0bda Realtek Semiconductor Corp.)
 
-10.15及以上系统可不添加驱动即可正常使用，但是摄像头硬件存在差异，有不同的设备id，可能部分设备无法使用，可以尝试添加以下驱动之一(kexts目录下)
+10.15 and above systems can be used normally without adding a driver, but there are differences in camera hardware, with different device IDs, some devices may not be available, you can try to add one of the following drivers (under the kexts directory)
 
 [UVC2FaceTimeHD.kext](./kexts/UVC2FaceTimeHD.kext)
 
@@ -110,26 +109,26 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/stevezhengshiqi/one-key-
 
 
 
-### SD卡驱动
+### SD Card Driver
 
-可尝试以下驱动，由于我没有相关设备，大家自行测试
+You can try the following drivers, because I don't have the relevant equipment, you can test it yourself
 
 [cholonam/Sinetek-rtsx ](https://github.com/cholonam/Sinetek-rtsx/releases)
 
-### 重建缓存
+### Rebuild cache
 
 ```
-# 重建缓存
+# Rebuild cache
 sudo kextcache -i /
 
-# 某些原因更改了L/E或S/L/E驱动
+# Changed L/E or S/L/E driver for some reason
 sudo chown -R root:wheel /System/Library/Extensions/
 sudo chmod -R 755 /System/Library/Extensions/
 sudo kmutil install --update-all
 sudo kcditto
 ```
 
-### 睡眠模式（更好的睡眠）
+### Sleep Mode (Better Sleep)
 
 ```
 sudo pmset -a hibernatemode 0
@@ -142,30 +141,29 @@ sudo chflags uchg /private/var/vm/sleepimage
 
 
 
-### 已知问题
+### Known Issues
 
-- ~~sd读卡器无法使用~~(BIOS可以关闭，节省电量)
-- ~~雷电口需要开启前或者睡眠唤醒前插上，冷启动才会生效（生效后热插拔正常）~~
-- ~~耳机麦克风不工作（电脑麦克风正常，插耳机时使用电脑麦克风）~~
-- ~~睡眠前耳机没有拔下，唤醒后耳机可能无声，重新插拔下即可~~(ComboJack可能也把这个修复了)
-- ~~蓝牙长时间睡眠后唤醒可能不工作，可能需要重新睡眠唤醒或者重启~~（新版本usbports.kext蓝牙不内建，同时关闭蓝牙高级选项，大幅改善问题，出问题几率很小）
-- ~~Intel Iris Plus Graphics 640睡眠唤醒后有几率黑屏~~，WhateverGreen的framebuffer-flags补丁fixed
+- ~~SD card reader cannot be used~~ (BIOS can be turned off to save power)
+- ~~The lightning port needs to be plugged in before it is turned on or before waking up from sleep, and the cold boot will take effect (the hot swap is normal after it takes effect)~~
+- ~~Headphone microphone does not work (computer microphone is normal, use computer microphone when plugging in headphones)~~
+- ~~The headset is not unplugged before sleep. After waking up, the headset may be silent. Just unplug it again~~ (ComboJack may also fix this)
+- ~~Bluetooth waking up after a long sleep may not work, you may need to wake up from sleep again or restart~~ (The new version of usbports.kext does not have built-in bluetooth, and turn off the advanced options of bluetooth, which greatly improves the problem, and the probability of problems is very small)
+- ~~Intel Iris Plus Graphics 640 has a chance of black screen after waking up from sleep~~, Fixed the framebuffer-flags patch of WhateverGreen
 
 
-
-### BIOS推荐设置
+### BIOS recommended settings
 
 - Sata: AHCI
 - Disable Secure Boot
 - Enable VT
 - Disable VT-D
-- Disable SD card reader (可选，关闭节省0.5w功耗)
+- Disable SD card reader (Optional, turn off to save 0.5w power consumption)
 
 ---------
 
-#### 安装注意事项（非常重要，否则可能无法进入桌面）：由于主板默认dvmt显存32M，所以FHD屏幕修改至少64M，QHD至少96M
+#### Installation precautions (very important, otherwise you may not be able to enter the desktop): Since the default dvmt video memory of the motherboard is 32M, the FHD screen is modified at least 64M, and the QHD screen is at least 96M
 
-#### 修改方法：
+#### Modification method:
 
 ---------
 
