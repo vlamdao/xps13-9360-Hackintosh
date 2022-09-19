@@ -7,14 +7,14 @@
 | Computer Model            | DELL XPS 13-9360                                             |
 | Clover:Current System Version | macOS Mojave 10.14.6(18G84) & 10.15(Beta 3)                  |
 | OC:Current System Version     | macOS Monterey 12.0.1 (21A559)                               |
-| BIOS                | 2.13.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
-| 处理器              | Intel Core i7-7560U/i7-8550U                                 |
-| 内存                | 16 GB(DDR3L 2133 MHz)                                        |
-| 硬盘                | SAMSUNG PM961 (512GB)                                        |
-| 显卡                | Intel Iris Plus Graphics 640/UHD 620                         |
-| 显示器              | QHD(Sharp触屏 3200x1800)                                     |
-| 声卡                | ALC256 (ALC3246)                                             |
-| 网卡                | 更换为 BCM94360cs2 （原网卡Killer 1535，也可以更换为DW1560/1830/1820A,否则无法驱动网卡，蓝牙也有些问题) |
+| BIOS                | 2.13.0 (2.6.2 Later versions have bugs and the memory frequency becomes 1867 MHz, but it does not affect the installation) |
+| Processor              | Intel Core i7-7560U/i7-8550U                                 |
+| Memory                | 16 GB(DDR3L 2133 MHz)                                        |
+| Hard disk                | SAMSUNG PM961 (512GB)                                        |
+| Graphics card                | Intel Iris Plus Graphics 640/UHD 620                         |
+| Monitor              | QHD(Sharp touch screen 3200x1800)                                     |
+| Sound card                | ALC256 (ALC3246)                                             |
+| Network card                | replaced with BCM94360cs2 （Original network card Killer 1535，can also be replaced with DW1560/1830/1820A, otherwise, the network card cannot be driven, and there are some problems with Bluetooth.) |
 
 ![](https://hoan-pic.oss-cn-hangzhou.aliyuncs.com/img/info.png)
 
