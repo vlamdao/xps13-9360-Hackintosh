@@ -28,11 +28,11 @@ Method 1：ALCPlugFix file(From:[daliansky黑果小兵](https://github.com/dalia
 
 Method 2 (Recommend)：ComboJack(From：[ohmygod1993](http://bbs.pcbeta.com/viewthread-1799183-1-1.html),[hackintosh-stuff](https://github.com/hackintosh-stuff/ComboJack)，Modify the driver on xps9560
 
-1. First，if used ALCPlugFix method，Uninstall first，Double-click ALCPlugFix/uninstall.command，And delete CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩under the CodecCommander.kext driver
+1. First，if used ALCPlugFix method，Uninstall first，Double-click ALCPlugFix/uninstall.command，And delete CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩ under the CodecCommander.kext driver
 
-2. 将kexts⁩ ▸ ⁨ComboJack_Installer⁩Put the VerbStub.kext under CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下
+2. 将kexts⁩ ▸ ⁨ComboJack_Installer⁩Put the VerbStub.kext under CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Under Other⁩
 
-3. Execute in the terminal⁨kexts⁩ ▸ ⁨ComboJack_Installer⁩install.sh, and restart
+3. Execute in the terminal⁨ kexts⁩ ▸ ⁨ComboJack_Installer⁩ install.sh, and restart
 
 4. Insert headphones and select headset, so that both headphones and headsets shouldwork normally
 
@@ -40,7 +40,7 @@ Method 2 (Recommend)：ComboJack(From：[ohmygod1993](http://bbs.pcbeta.com/view
 
 ### Network Card
 
-1. If the wireless frequency band is not enough, it can be added in the Boot parameter Arguments in config `brcmfx-country=#a`, and restart
+1. If the wireless frequency band is not enough, it can be added in the boot parameters in config `brcmfx-country=#a`, and restart
 
 2. The latest version of AirportBrcmFixup shows that the network card is a third-party under DW1830. It has no effect. You can use version 1.1.6 to restore it
 3. Apple's original network card needs to add the AirportBrcmFixup driver, otherwise sleep will sometimes be woken up
@@ -53,11 +53,11 @@ If the QHD resolution device, the Apple logo becomes larger in the second stage 
 
 FHD or external display needs to enable HIDPI，You can refer to [xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi)
 
-Color calibration file：Displays/RXN49_LQ133Z1_01.icm, The file is a QHD screen color calibration file（From：[grawlinson](https://github.com/grawlinson/dell-xps-9360/tree/master/display)），Copy to `/Users/<username>/Library/ColorSync/Profiles`or`/Library/ColorSync/Profiles`then select Colors in Display Preferences
+Color calibration file：Displays/RXN49_LQ133Z1_01.icm, The file is a QHD screen color calibration file（From：[grawlinson](https://github.com/grawlinson/dell-xps-9360/tree/master/display)，Copy to `/Users/<username>/Library/ColorSync/Profiles`or`/Library/ColorSync/Profiles`then select Colors in Display Preferences
 
 
 
-### 蓝牙
+### Bluetooth
 
 关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录或者将BrcmFirmwareRepo.kext和BrcmPatchRAM2.kext放入到系统L/E目录下并重建缓存，官方解释说放到系统种内存效率更高，目前没看出来差别，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试,10.15使用10.15文件夹驱动
 
