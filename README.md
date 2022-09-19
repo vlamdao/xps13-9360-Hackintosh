@@ -167,15 +167,15 @@ sudo chflags uchg /private/var/vm/sleepimage
 
 ---------
 
-**方式一**（推荐）：此方法有风险，目前bios在2.3.1到2.13.0中参数可用，其它自行测试
+**Method 1** (recommended): This method is risky. Currently, bios parameters are available in 2.3.1 to 2.13.0, and others are tested by themselves.
 
-使用DVMT目录下的DVMT.efi引导启动，0x785是DVMT Pre-allocation，首先命令 `setup_var 0x785` 回车，查看有无返回值，未修改是返回0x01(32M),**如果没有返回值，切勿继续尝试以下操作**。其它2个参数也是类似命令，查看有无返回值，**没有返回值，切勿继续尝试以下操作**
+Use DVMT.efi in the DVMT directory to boot, 0x785 is DVMT Pre-allocation, first command `setup_var 0x785` and press Enter to see if there is a return value, if it is not modified, it will return 0x01 (32M), **If there is no return value, switch to Do not continue trying the following**. The other 2 parameters are also similar commands, check whether there is a return value, **no return value, do not continue to try the following operations**
 
-之后修改以下三个参数`0x4de`  `0x785` `0x786` ,命令分别为：
+Then modify the following three parameters `0x4de` `0x785` `0x786`, the commands are:
 
  `setup_var 0x4de 0x00 ` 
 
- `setup_var 0x785 0x06 `  :这里我直接设置到192M,FHD设置`setup_var 0x785 0x02 `即可 
+ `setup_var 0x785 0x06 `: Here I set it directly to 192M, and FHD can set `setup_var 0x785 0x02`
 
  `setup_var 0x786 0x03 ` 
 
@@ -197,21 +197,21 @@ options：
 | DVMT Pre-allocation   | 0x785  | 0x01 (32M)     | 0x06 (192M)     | Increase DVMT pre-allocated size to 192M for QHD+ displays |
 | DVMT Total Gfx Memory | 0x786  | 0x01 (128M)    | 0x03 (MAX)      | Increase total gfx memory limit to maximum                 |
 
-以上表格来自：[the-darkvoid](https://github.com/the-darkvoid/XPS9360-macOS)
+The above table is from：[the-darkvoid](https://github.com/the-darkvoid/XPS9360-macOS)
 
-教程：
+Tutorial:
 
-1. 开机按F2或者F12进入BIOS，选择Boot Sequence![](https://ws3.sinaimg.cn/large/006tNbRwgy1fvv0563xohj31kw16k7wn.jpg)
-2. 点击Add Boot Option![](https://ws1.sinaimg.cn/large/006tNbRwgy1fvv064tmofj31fq0xyu0z.jpg)
-3. 填写名称，随便写什么都可以，选择DVMT.efi得路径，你可以把该文件放到U盘引导分区，也可以放到硬盘引导分区，随意，我的放在clover得tools中![](https://ws4.sinaimg.cn/large/006tNbRwgy1fvv07927izj31bc12s1l0.jpg)
-4. 完成后点击OK，保持BIOS设置，重启，按F12，选择之前的填写的引导后回车，我的是`SHELL`![](https://ws3.sinaimg.cn/large/006tNbRwgy1fvv0bb4va8j30t60pukjl.jpg)
-5. 分别输入以上三条命令，执行后会显示之前的值和设置后的值，结果如下图![](https://ws4.sinaimg.cn/large/006tNbRwgy1fvv0f7eyyhj31ho0vg1kz.jpg)
+1. Press F2 or F12 to enter the BIOS and select Boot Sequence![](https://ws3.sinaimg.cn/large/006tNbRwgy1fvv0563xohj31kw16k7wn.jpg)
+2. Click on Add Boot Option![](https://ws1.sinaimg.cn/large/006tNbRwgy1fvv064tmofj31fq0xyu0z.jpg)
+3. Fill in the name, write whatever you want, and choose the path of DVMT.efi. You can put the file in the boot partition of the U disk or the boot partition of the hard disk. Feel free to put mine in the clover tools![](https://ws4.sinaimg.cn/large/006tNbRwgy1fvv07927izj31bc12s1l0.jpg)
+4. After completion, click OK, keep the BIOS settings, restart, press F12, select the previously filled in and enter after booting, mine is `SHELL`![](https://ws3.sinaimg.cn/large/006tNbRwgy1fvv0bb4va8j30t60pukjl.jpg)
+5. Enter the above three commands respectively, the previous value and the set value will be displayed after execution, the result is as follows![](https://ws4.sinaimg.cn/large/006tNbRwgy1fvv0f7eyyhj31ho0vg1kz.jpg)
 
 --------
 
-**方式二**：~~WhateverGreen貌似不支持10.14使用WhateverGreen修复DVMT-Prealloc 32MB,（已添加到配置文件中，正常可以生效，不需要修改BIOS的dvmt，我没有测试过，自行测试）~~
+**Method 2**：~~WhateverGreen does not seem to support 10.14 using WhateverGreen to repair DVMT-Prealloc 32MB, (it has been added to the configuration file, it can take effect normally, no need to modify the dvmt of the BIOS, I have not tested it, test it myself)~~
 
-~~DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开~~
+~~DVMT patch is added by default in KextsToPatch, but it is not turned on, it needs to be turned on by itself~~
 
 -----------------
 
@@ -230,12 +230,12 @@ options：
 
 ### 2020-11-24 OpenCore
 
-- 修复Big Sur下电源键唤醒没有立刻亮屏
-- 删除acpi亮度按键补丁替换为BrightnessKeys.kext
+- Fixed the problem that the power button does not turn on the screen immediately when the Big Sur wakes up
+- Remove the acpi brightness key patch and replace it with BrightnessKeys.kext
 
 ### 2020-11-07 OpenCore
 
-- 日常更新OpenCore 0.6.3 & 最新驱动
+- Daily update OpenCore 0.6.3 & latest driver
 
 ### 2020-09-09 OpenCore
 
