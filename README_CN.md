@@ -2,11 +2,11 @@
 
 # XPS 13-9360 Monterey
 
-| Category                | Details                                                     |
+| 类别                | 详细信息                                                     |
 | ------------------- | ------------------------------------------------------------ |
-| Computer Model            | DELL XPS 13-9360                                             |
-| Clover:Current System Version | macOS Mojave 10.14.6(18G84) & 10.15(Beta 3)                  |
-| OC:Current System Version     | macOS Monterey 12.0.1 (21A559)                               |
+| 电脑型号            | DELL XPS 13-9360                                             |
+| Clover:当前系统版本 | macOS Mojave 10.14.6(18G84) & 10.15(Beta 3)                  |
+| OC:当前系统版本     | macOS Monterey 12.0.1 (21A559)                               |
 | BIOS                | 2.13.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器              | Intel Core i7-7560U/i7-8550U                                 |
 | 内存                | 16 GB(DDR3L 2133 MHz)                                        |
