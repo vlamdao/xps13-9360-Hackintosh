@@ -14,46 +14,46 @@
 | Graphics card                | Intel Iris Plus Graphics 640/UHD 620                         |
 | Monitor              | QHD(Sharp touch screen 3200x1800)                                     |
 | Sound card                | ALC256 (ALC3246)                                             |
-| Network card                | replaced with BCM94360cs2 （Original network card Killer 1535，can also be replaced with DW1560/1830/1820A, otherwise, the network card cannot be driven, and there are some problems with Bluetooth.) |
+| Network card                | replaced with BCM94360cs2 (Original network card Killer 1535，can also be replaced with DW1560/1830/1820A, otherwise, the network card cannot be driven, and there are some problems with Bluetooth.) |
 
 ![](https://hoan-pic.oss-cn-hangzhou.aliyuncs.com/img/info.png)
 
-## 系统安装后注意事项
+## Notes after system installation
 
-### 耳机
+### Headphone
 
-第一种：ALCPlugFix文件(来自:[daliansky黑果小兵](https://github.com/daliansky/dell7000)），双击ALCPlugFix/install.command即可，但是插上耳机无法使用耳麦，使用的电脑内置mic
-
-
-
-第二种(推荐)：ComboJack(来自：[ohmygod1993](http://bbs.pcbeta.com/viewthread-1799183-1-1.html),[hackintosh-stuff](https://github.com/hackintosh-stuff/ComboJack)，修改xps9560上的驱动
-
-1. 前提，使用过ALCPlugFix方式，先卸载，双击ALCPlugFix/uninstall.command即可，并删除CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下的CodecCommander.kext驱动
-
-2. 将kexts⁩ ▸ ⁨ComboJack_Installer⁩下的VerbStub.kext放到CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下
-
-3. 终端下执行⁨kexts⁩ ▸ ⁨ComboJack_Installer⁩下的install.sh重启即可
-
-4. 插入耳机选择Headset,这样耳机和耳麦都正常工作 
+Method 1：ALCPlugFix file(From:[daliansky黑果小兵](https://github.com/daliansky/dell7000)）, Double-click ALCPlugFix/install.command，But I can't use the headset when I plug it in，The computer used has a built-in mic
 
 
 
-### 网卡
+Method 2 (Recommend)：ComboJack(From：[ohmygod1993](http://bbs.pcbeta.com/viewthread-1799183-1-1.html),[hackintosh-stuff](https://github.com/hackintosh-stuff/ComboJack)，Modify the driver on xps9560
 
-1. 无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
+1. First，if used ALCPlugFix method，Uninstall first，Double-click ALCPlugFix/uninstall.command，And delete CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩under the CodecCommander.kext driver
 
-2. 最新版本的AirportBrcmFixup在DW1830下显示网卡为第三方，使用没有影响，可以使用1.1.6版本还原
-3. 苹果原装网卡需要添加AirportBrcmFixup驱动，否则睡眠有时候会被唤醒
+2. 将kexts⁩ ▸ ⁨ComboJack_Installer⁩Put the VerbStub.kext under CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下
+
+3. Execute in the terminal⁨kexts⁩ ▸ ⁨ComboJack_Installer⁩install.sh, and restart
+
+4. Insert headphones and select headset, so that both headphones and headsets shouldwork normally
 
 
 
-### 显示器
+### Network Card
 
-如果QHD分辨率设备，在开机第二阶段苹果logo变大，在config的Boot Graphics的UIScale中填入`2`，重启即可
+1. If the wireless frequency band is not enough, it can be added in the Boot parameter Arguments in config `brcmfx-country=#a`, and restart
 
-FHD或者外接显示器需要开启HIDPI，可以参考[xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi)
+2. The latest version of AirportBrcmFixup shows that the network card is a third-party under DW1830. It has no effect. You can use version 1.1.6 to restore it
+3. Apple's original network card needs to add the AirportBrcmFixup driver, otherwise sleep will sometimes be woken up
 
-校色文件：Displays/RXN49_LQ133Z1_01.icm的文件是QHD的屏幕校色文件（来自：[grawlinson](https://github.com/grawlinson/dell-xps-9360/tree/master/display)），复制到`/Users/<username>/Library/ColorSync/Profiles`或者`/Library/ColorSync/Profiles`下，然后显示器偏好设置的颜色选择
+
+
+### Monitor
+
+If the QHD resolution device, the Apple logo becomes larger in the second stage of booting, fill in `2` in the UIScale of Boot Graphics of config, and restart.
+
+FHD or external display needs to enable HIDPI，You can refer to [xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi)
+
+Color calibration file：Displays/RXN49_LQ133Z1_01.icm, The file is a QHD screen color calibration file（From：[grawlinson](https://github.com/grawlinson/dell-xps-9360/tree/master/display)），Copy to `/Users/<username>/Library/ColorSync/Profiles`or`/Library/ColorSync/Profiles`then select Colors in Display Preferences
 
 
 
